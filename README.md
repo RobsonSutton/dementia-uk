@@ -53,7 +53,8 @@ python nbs-clinic-map/generate_clinic_map.py --input dementia_uk_clinic_location
 
 **Dependencies:**
 ```bash
-pip install pgeocode
+cd nbs-clinic-map
+python -m pip install -r requirements.txt
 ```
 
 ### Typical workflow
