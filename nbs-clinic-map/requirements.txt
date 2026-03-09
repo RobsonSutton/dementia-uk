@@ -1,0 +1,4 @@
+# Dependencies required for the nbs-clinic-map scripts
+# (run from the repo root: python -m pip install -r requirements.txt)
+
+pgeocode
