@@ -12,7 +12,13 @@ from urllib.request import urlopen, Request
 
 
 def fetch_page(url: str) -> str:
-    req = Request(url, headers={"User-Agent": "Mozilla/5.0"})
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
+        "Accept-Language": "en-US,en;q=0.5",
+        "Referer": "https://www.dementiauk.org/",
+    }
+    req = Request(url, headers=headers)
     with urlopen(req, timeout=20) as resp:
         return resp.read().decode("utf-8")
 
@@ -63,6 +69,25 @@ def extract_clinics(html: str) -> list[dict]:
     return clinics
 
 
+def deduplicate_clinics(clinics: list[dict]) -> list[dict]:
+    unique_clinics = []
+    seen = set()
+    duplicates = 0
+
+    for clinic in clinics:
+        row_key = tuple(sorted(clinic.items()))
+        if row_key in seen:
+            duplicates += 1
+            continue
+        seen.add(row_key)
+        unique_clinics.append(clinic)
+
+    if duplicates:
+        print(f"Removed {duplicates} duplicate clinic entr{'y' if duplicates == 1 else 'ies'}.")
+
+    return unique_clinics
+
+
 def main():
     url = (
         "https://www.dementiauk.org/information-and-support/"
@@ -75,6 +100,8 @@ def main():
 
     clinics = extract_clinics(html)
     print(f"Found {len(clinics)} clinic locations\n")
+
+    clinics = deduplicate_clinics(clinics)
 
     if not clinics:
         print("No clinics found – the page structure may have changed.", file=sys.stderr)
