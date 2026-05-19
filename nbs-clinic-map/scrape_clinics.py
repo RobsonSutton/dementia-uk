@@ -107,8 +107,9 @@ def main():
         print("No clinics found – the page structure may have changed.", file=sys.stderr)
         sys.exit(1)
 
-    # Write CSV
-    output_dir = Path(__file__).parent
+    # Write CSV to data folder
+    output_dir = Path(__file__).parent / "data"
+    output_dir.mkdir(parents=True, exist_ok=True)
     output_path = output_dir / "dementia_uk_clinic_locations.csv"
 
     with open(output_path, "w", newline="", encoding="utf-8") as f:
