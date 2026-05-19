@@ -48,7 +48,7 @@ Map features:
 python nbs-clinic-map/generate_clinic_map.py
 
 # Custom input/output paths
-python nbs-clinic-map/generate_clinic_map.py --input dementia_uk_clinic_locations.csv --output clinic_map.html
+python nbs-clinic-map/generate_clinic_map.py --input dementia_uk_clinic_locations.csv --output index.html
 ```
 
 **Dependencies:**
@@ -67,5 +67,5 @@ python nbs-clinic-map/scrape_clinics.py
 python nbs-clinic-map/generate_clinic_map.py
 
 # 3. Open the map
-open nbs-clinic-map/clinic_map.html
+open nbs-clinic-map/index.html
 ```
