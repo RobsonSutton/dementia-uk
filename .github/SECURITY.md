@@ -2,7 +2,7 @@
 
 ## Reporting a Vulnerability
 
-If you discover a security vulnerability in this repository, please report it responsibly by emailing **[Your email here]** instead of using the public issue tracker.
+If you discover a security vulnerability in this repository, please report it responsibly by emailing robson.sutton@hotmail.co.uk instead of using the public issue tracker.
 
 Please include:
 - Description of the vulnerability
