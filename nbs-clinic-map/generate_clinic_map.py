@@ -679,12 +679,12 @@ def main():
     parser = argparse.ArgumentParser(description="Generate an interactive clinic location map.")
     parser.add_argument(
         "--input", "-i",
-        default=str(Path(__file__).parent / "dementia_uk_clinic_locations.csv"),
+        default=str(Path(__file__).parent / "data" / "dementia_uk_clinic_locations.csv"),
         help="Path to the clinic CSV file.",
     )
     parser.add_argument(
         "--output", "-o",
-        default=str(Path(__file__).parent / "clinic_map.html"),
+        default=str(Path(__file__).parent / "output" / "clinic_map.html"),
         help="Path for the output HTML file.",
     )
     args = parser.parse_args()
@@ -701,6 +701,7 @@ def main():
     html = generate_html(geocoded)
 
     output_path = Path(args.output)
+    output_path.parent.mkdir(parents=True, exist_ok=True)
     output_path.write_text(html, encoding="utf-8")
     print(f"\nMap written to: {output_path}")
     print(f"Open in your browser: file://{output_path.resolve()}")
