@@ -8,7 +8,7 @@ HTML file with a Leaflet.js map.
 
 Usage:
     python generate_clinic_map.py
-    python generate_clinic_map.py --input dementia_uk_clinic_locations.csv --output clinic_map.html
+    python generate_clinic_map.py --input dementia_uk_clinic_locations.csv --output index.html
 """
 
 import argparse
@@ -684,7 +684,7 @@ def main():
     )
     parser.add_argument(
         "--output", "-o",
-        default=str(Path(__file__).parent / "output" / "clinic_map.html"),
+        default=str(Path(__file__).parent / "output" / "index.html"),
         help="Path for the output HTML file.",
     )
     args = parser.parse_args()
