@@ -2,8 +2,7 @@ name: Scrape and Deploy Dementia UK Clinic Map to GitHub Pages
 
 on:
   schedule:
-    # 9 AM UTC every day
-    - cron: '0 9 * * *'
+    - cron: '0 7 * * *'
   workflow_dispatch:
 
 permissions:
